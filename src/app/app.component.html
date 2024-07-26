@@ -1,0 +1,18 @@
+<h2>Playable .mp3 file</h2>
+<audio src="assets/sample-6s.mp3" width="600" height="450" controls></audio>
+
+<h2>Unplayable .spx file</h2>
+<audio src="assets/unplayable.spx" width="600" height="450" controls></audio>
+
+<div style="margin-top: 15px">
+<button (click)="loadAudio()">Convert to playable audio</button>
+</div>
+
+<div>{{videoConversionService.conversionTime | async}}</div>
+<div>{{videoConversionService.message | async}}</div>
+
+<p *ngIf="videoConversionService.conversionInProgress">Converting...</p>
+
+<div *ngIf="videoConversionService.convertedAudioSrc | async" style="margin-top: 15px">
+  <audio [src]="videoConversionService.convertedAudioSrc | async" width="600" height="450" id="output-video" controls></audio><br />
+</div>
